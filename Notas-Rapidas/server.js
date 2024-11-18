@@ -9,7 +9,6 @@ const NOTES_FILE = path.join(__dirname, 'notes.json');
 
 app.use(express.json());
 
-// Listar todas as notas
 app.get('/notas', (req, res) => {
     fs.readFile(NOTES_FILE, 'utf8', (err, data) => {
         if (err) return res.status(500).json({ error: 'Erro ao ler as notas.' });
@@ -18,7 +17,6 @@ app.get('/notas', (req, res) => {
     });
 });
 
-// Adicionar uma nova nota
 app.post('/notas', (req, res) => {
     const { texto } = req.body;
     if (!texto) {
@@ -39,7 +37,6 @@ app.post('/notas', (req, res) => {
     });
 });
 
-// Inicializar o servidor
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
